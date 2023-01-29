@@ -76,7 +76,7 @@ void loop() {
       digitalWrite(port, LOW); // on coupe le précédent port
       lecture.remove(0, 4); // on transforme la chaine de caractère en supprimant la partie "port"
       Serial.println(port);
-      port=lecture.toInt(); //et tranformant le reste en entier
+      port=lecture.toInt(); //et tranforme le reste en entier
       digitalWrite(port, HIGH);
       
     } 
@@ -92,7 +92,7 @@ void loop() {
       
       //lecture.concat(";");
       for (int i=0; i<repetition;i++){
-        emission_ir.sendNEC(code, 32); // code télécommande CGV on/off
+        emission_ir.sendNEC(code, 32);
         delay(10);
       }
     }
@@ -102,7 +102,7 @@ void loop() {
       Serial.println("envoie multiple");
       //lecture.concat(";");
       while(lecture.indexOf(";")!=-1){
-        emission_ir.sendNEC(convertStrToHex(lecture.substring(0,lecture.indexOf(";"))), 32); // code télécommande CGV on/off
+        emission_ir.sendNEC(convertStrToHex(lecture.substring(0,lecture.indexOf(";"))), 32);
         lecture.remove(0,lecture.indexOf(";")+1);
         delay(250);
       }
@@ -117,7 +117,7 @@ void loop() {
     else {
       Serial.println("Envoi commande");
       Serial.println(convertStrToHex(lecture));
-      emission_ir.sendNEC(convertStrToHex(lecture), 32); // code télécommande CGV on/off
+      emission_ir.sendNEC(convertStrToHex(lecture), 32);
     }
 
   } // fin While
